@@ -182,8 +182,9 @@ async function build() {
     token: { name: c.name, symbol: c.symbol },
     presentation: {
       description: c.description.normalize("NFC").trim(),
-      image: { sourcePath: IMAGE_PATH, uri: c.imageUrl },
-      links: [{ kind: "website", uri: c.website }, { kind: "x", uri: c.x }],
+      // Programmable wants each address in its canonical form (for example with the trailing slash).
+      image: { sourcePath: IMAGE_PATH, uri: new URL(c.imageUrl).href },
+      links: [{ kind: "website", uri: new URL(c.website).href }, { kind: "x", uri: new URL(c.x).href }],
     },
   };
   let result;

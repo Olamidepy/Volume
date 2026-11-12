@@ -7,7 +7,6 @@ import { Feature } from "@/components/sections/feature"
 import { Ready } from "@/components/sections/ready"
 import { Steps } from "@/components/sections/steps"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { coin, isLive, site } from "@/lib/site"
 
@@ -42,7 +41,7 @@ const questions = [
 export function Home() {
   return (
     <main>
-      <section className="relative isolate overflow-hidden pt-28 pb-20 md:pt-44 md:pb-28">
+      <section className="relative isolate overflow-hidden pt-36 pb-20 md:pt-48 md:pb-28">
         {/* The X cover artwork, behind the hero. */}
         <img
           src="/volume-cover.jpg"
@@ -52,10 +51,6 @@ export function Home() {
 
         <div className="wrap">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-            <Badge className="fade-in mb-6 py-1">
-              <span className="size-1.5 rounded-full bg-white" />
-              {isLive ? "Live" : "Coming soon"} on {site.launchpad}
-            </Badge>
             <h1 className="font-display text-chrome fade-in text-[42px] leading-[1.02] font-medium tracking-[-0.035em] sm:text-6xl md:text-[76px]">
               Trade. Grow.
               <br />
@@ -65,8 +60,8 @@ export function Home() {
               className="text-muted-foreground fade-in mt-6 max-w-[34rem] text-base leading-relaxed md:mt-7 md:text-[17px]"
               style={{ animationDelay: "150ms" }}
             >
-              {site.name} ({coin}) is a coin on {site.network} built around one thing: trading. One Uniswap v4 pool,
-              locked liquidity, fees fixed at launch.
+              A token with no trades takes up no space. {coin} measures itself by the room it takes up in the market,
+              one trade at a time.
             </p>
             <div
               className="fade-in mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:justify-center md:mt-9"

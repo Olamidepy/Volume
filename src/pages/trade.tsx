@@ -349,7 +349,7 @@ function ComingSoonCard() {
 
 export function Trade() {
   return (
-    <main className="wrap pt-32 pb-20 md:pt-44 md:pb-28">
+    <main className="wrap pt-40 pb-20 md:pt-48 md:pb-28">
       <Badge className="mb-5 py-1">
         <ArrowLeftRight />
         Trade

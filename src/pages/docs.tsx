@@ -8,7 +8,8 @@ const sections = [
     id: "overview",
     title: "Overview",
     body: [
-      `${site.name} (${coin}) is a coin on ${site.network}, ${isLive ? "live" : "coming soon"} on ${site.launchpad}. Its idea is simple: trade, grow, generate volume.`,
+      `${site.definition.term} (${site.definition.kind}): ${site.definition.meaning} ${site.definition.lines.join(" ")}`,
+      `${site.name} (${coin}) is a coin on ${site.network}, ${isLive ? "live" : "coming soon"} on ${site.launchpad}.`,
       `It has a fixed supply of ${site.supply} and trades against ETH in a single Uniswap v4 pool.`,
     ],
   },
@@ -32,7 +33,8 @@ const sections = [
     id: "launch",
     title: "Launch details",
     body: [
-      `${site.name} launches through ${site.launchpad}'s Classic model. The whole supply goes into the pool at launch, and that liquidity position is locked permanently.`,
+      `${site.name} launches through ${site.launchpad} with its protected launch contracts. The whole supply goes into the pool at launch, and that liquidity position is locked permanently.`,
+      "Launch protection applies at the start. For the first 5 minutes, each wallet can buy at most 2% of the supply. For the first 30 seconds, the buy fee starts very high and falls to normal, which makes sniping the launch expensive.",
       "Launch details are confirmed when the launch transaction is signed. The contract address on the Trade page is the one to trust.",
     ],
   },
@@ -57,7 +59,7 @@ const sections = [
 
 export function Docs() {
   return (
-    <main className="wrap pt-32 pb-20 md:pt-44 md:pb-28">
+    <main className="wrap pt-40 pb-20 md:pt-48 md:pb-28">
       <Badge className="mb-5 py-1">
         <BookOpen />
         Docs

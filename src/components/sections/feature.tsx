@@ -36,18 +36,18 @@ export function Feature() {
       </Reveal>
 
       <div className="flex flex-col gap-7">
-        <SectionHeading
-          icon={Lightbulb}
-          label="The idea"
-          title={
-            <>
-              A coin named
-              <br />
-              for what it does.
-            </>
-          }
-          description={`${site.name} is built around one thing: trading. Uniswap is on v4, so ${coin} skipped ahead two versions. It's a name, not a Uniswap product.`}
-        />
+        <SectionHeading icon={Lightbulb} label="The definition" title={<>What {site.name} means.</>} />
+        <figure className="panel rounded-2xl border border-white/10 p-6 md:p-7">
+          <p className="font-display text-2xl font-medium tracking-tight md:text-3xl">
+            {site.definition.term} <span className="text-graphite text-lg italic md:text-xl">({site.definition.kind})</span>
+          </p>
+          <p className="text-silver mt-3 text-lg leading-relaxed">{site.definition.meaning}</p>
+          {site.definition.lines.map((line) => (
+            <p key={line} className="text-muted-foreground mt-2 leading-relaxed">
+              {line}
+            </p>
+          ))}
+        </figure>
         <ul className="flex flex-col gap-4">
           {points.map((point) => (
             <li key={point} className="text-silver flex gap-3 text-[15px]">

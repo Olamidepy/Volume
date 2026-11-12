@@ -17,7 +17,8 @@ export function Footer() {
         <div className="col-span-2 md:col-span-1">
           <Logo />
           <p className="text-muted-foreground mt-4 max-w-xs text-sm leading-relaxed">
-            {site.tagline} A coin on {site.network}, {isLive ? "live" : "coming soon"} on {site.launchpad}.
+            {site.definition.term} ({site.definition.kind}): {site.definition.meaning} A coin on {site.network},{" "}
+            {isLive ? "live" : "coming soon"} on {site.launchpad}.
           </p>
         </div>
         <div>

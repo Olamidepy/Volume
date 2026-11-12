@@ -1,0 +1,16 @@
+{
+  "name": "Volume",
+  "symbol": "V6",
+  "description": "Volume (n.): the space a thing occupies. A token with no trades takes up no space. V6 measures itself by the room it takes up in the market, one trade at a time. A community token on Ethereum with fixed fees and permanently locked launch liquidity.",
+  "imageFile": "../../public/volume-logo.png",
+  "imageUrl": "https://www.volumeprogrammable.xyz/volume-logo.png",
+  "website": "https://www.volumeprogrammable.xyz",
+  "x": "https://x.com/volume_live",
+  "controller": "0x2C3463D9C8e0d5E34C058fE09B127Bb055Ae591E",
+  "creatorFeeBps": 470,
+  "targetFdvUsd": 17500,
+  "additionalTaxExemptWallets": [],
+  "initialBuyUsd": 2,
+  "initialBuyBufferPercent": 0,
+  "supply": "1000000000000000000000000000"
+}

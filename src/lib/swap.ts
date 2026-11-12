@@ -17,8 +17,8 @@ import { site } from "@/lib/site"
 // ─────────────────────────────────────────────────────────────────────────────
 // Direct swaps on the Volume Uniswap v4 pool (ETH / V6) on Ethereum mainnet.
 //
-// Addresses and encoding follow Programmable's own Classic mainnet fork test
-// (classic-v3: test/ClassicV3MainnetFork.t.sol and releases/classic-v3/mainnet-manifest.json).
+// Volume launches with Programmable's protected launch contracts, whose hook only accepts swaps routed
+// through the Uniswap Universal Router below (pinned in @programmable/launch 4.1.7).
 // ExactInputSingleParams has minHopPriceX36, as on that Universal Router.
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -37,13 +37,13 @@ const ZERO: Address = "0x0000000000000000000000000000000000000000"
 const MSG_SENDER: Address = "0x0000000000000000000000000000000000000001"
 
 export const TOKEN = (site.contract || ZERO) as Address
-export const HOOK = site.hook as Address
+export const HOOK = (site.hook || ZERO) as Address
 
 export const POOL_KEY = {
   currency0: ZERO, // native ETH
   currency1: TOKEN,
   fee: 0, // the hook charges the trading fee
-  tickSpacing: 200, // Classic launches use 200
+  tickSpacing: 60, // Programmable's protected launch pool
   hooks: HOOK,
 } as const
 

@@ -4,7 +4,8 @@ import { Menu, X } from "lucide-react"
 import { ConnectWallet } from "@/components/connect-wallet"
 import { Logo } from "@/components/logo"
 import { Button } from "@/components/ui/button"
-import { coin, site } from "@/lib/site"
+import { XIcon } from "@/components/chain-icons"
+import { coin, isLive, site } from "@/lib/site"
 import { cn } from "@/lib/utils"
 
 const links = [
@@ -25,7 +26,21 @@ export function Header({ route }: { route: string }) {
   }, [])
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 px-4">
+    <header className="fixed inset-x-0 top-0 z-50">
+      {!isLive && site.socials.X && (
+        <a
+          href={site.socials.X}
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center justify-center gap-2 border-b border-white/10 bg-white px-4 py-2 text-center text-[13px] font-medium text-black transition-colors hover:bg-white/90"
+        >
+          <XIcon className="size-3 shrink-0" />
+          <span>
+            The contract address will be revealed on X. Follow @{site.socials.X.split("/").pop()}
+          </span>
+        </a>
+      )}
+      <div className="mt-3 px-4">
       <nav
         aria-label="Main"
         className={cn(
@@ -106,6 +121,7 @@ export function Header({ route }: { route: string }) {
           </ul>
         </div>
       )}
+      </div>
     </header>
   )
 }

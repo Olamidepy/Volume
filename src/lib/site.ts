@@ -4,13 +4,20 @@ export const site = {
   name: "Volume",
   ticker: "V6",
   tagline: "Trade. Grow. Generate volume.",
+  // The brand definition, shown on the home page and in the docs.
+  definition: {
+    term: "Volume",
+    kind: "n.",
+    meaning: "the space a thing occupies.",
+    lines: ["A token with no trades takes up no space.", "V6 measures itself by the room it takes up in the market, one trade at a time."],
+  },
+  url: "https://www.volumeprogrammable.xyz",
   network: "Ethereum",
   launchpad: "Programmable",
   // Add these after launch. The Trade page unlocks when `contract` is set.
   contract: "",
-  // Programmable's shared Classic fee hook on Ethereum (classic-v3 release).
-  // Confirm it against your launch transaction before going live.
-  hook: "0x35Fe236EA82F7cF525c9719d7df8F49F94D720CC",
+  // Volume's own pool hook. Paste it with `contract` after launch (both are in contracts/launch/out/summary.json).
+  hook: "",
   launchUrl: "https://programmable.family",
   // WalletConnect project ID from https://dashboard.reown.com (enables phone wallets).
   // Leave empty to use browser wallets only.
@@ -22,7 +29,7 @@ export const site = {
 
 export const coin = site.ticker || site.name
 
-export const isLive = Boolean(site.contract)
+export const isLive = Boolean(site.contract && site.hook)
 
 export const explorerUrl = site.contract ? `https://etherscan.io/token/${site.contract}` : ""
 export const uniswapUrl = site.contract

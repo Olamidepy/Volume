@@ -80,8 +80,8 @@ function setup(): WagmiAdapter | null {
       metadata: {
         name: site.name,
         description: "Trade, grow, generate volume. A coin on Ethereum.",
-        url: window.location.origin,
-        icons: [`${window.location.origin}/volume-logo.png`],
+        url: site.url,
+        icons: [`${site.url}/volume-logo.png`],
       },
       themeMode: "dark",
       themeVariables: {

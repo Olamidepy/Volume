@@ -28,7 +28,7 @@ All of these are in `volume.launch.json`.
 
 - **API key:** a Programmable API key for **Ethereum** with `custom-launch:create` and `custom-launch:read`, bound to the dev wallet.
 - **Logo URL:** `https://www.volumeprogrammable.xyz/volume-logo.png` must open in a browser. Finish the DNS setup first.
-- **A public GitHub repo** for the contract sources (step 2). Programmable reads the sources from it.
+- **This repo must be public.** Programmable reads the contract sources from it.
 - **ETH in the dev wallet** for the first buy and the launch gas.
 
 ## Run it (Ubuntu / WSL)
@@ -39,14 +39,11 @@ bash launch/setup.sh                        # 1. downloads and verifies Programm
 node launch/protected-eth.mjs prepare       # 2. writes the contract sources to launch/project
 ```
 
-Publish `launch/project` as a **public** repo (create an empty one on GitHub first, for example `volume-launch`):
+The sources in `launch/project` are committed in this repo (`github.com/Olamidepy/Volume`, which must stay
+public). If `prepare` changed anything, commit and push it before building:
 
 ```bash
-cd launch/project
-git init -b main && git add -A && git commit -m "Volume (V6) launch sources"
-git remote add origin https://github.com/<you>/volume-launch.git
-git push -u origin main
-cd ../..
+git add -A && git commit -m "Update launch sources" && git push
 ```
 
 Then build and submit:

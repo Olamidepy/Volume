@@ -7,7 +7,7 @@
 // Programmable reviews. The dev wallet signs on programmable.market after approval.
 //
 // Usage (from the contracts folder, after `bash launch/setup.sh`):
-//   node launch/protected-eth.mjs prepare     write the exact contract sources into launch/project (push it to a PUBLIC repo)
+//   node launch/protected-eth.mjs prepare     write the exact contract sources into launch/project (commit and push them)
 //   node launch/protected-eth.mjs build       build the launch request, write launch/out/
 //   node launch/protected-eth.mjs preflight   build if needed, then preflight (needs PROGRAMMABLE_API_KEY)
 //   node launch/protected-eth.mjs submit      build if needed, preflight, create; prints the launch ID
@@ -24,7 +24,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const PROJECT = join(HERE, "project"); // the exact reviewed sources; this folder is its own public git repo
+const PROJECT = join(HERE, "project"); // the exact reviewed sources, committed in the public Volume repo
 const OUT = join(HERE, "out");
 const CONFIG_BYTES = readFileSync(join(HERE, "volume.launch.json"));
 const CONFIG = JSON.parse(CONFIG_BYTES);
@@ -92,22 +92,19 @@ function prepare() {
   if (!existsSync(join(PROJECT, "README.md"))) writeFileSync(join(PROJECT, "README.md"),
     "# Volume (V6) launch sources\n\nThe exact contract sources for the Volume (V6) launch on Ethereum: Programmable's protected launch package\n(`@programmable/launch` 4.1.7, `contracts/launch-protection-v1`), unmodified. Do not edit these files.\n");
   log(`     ${Object.keys(standard.sources).length} source files written.\n`);
-  log("Next: publish launch/project as a PUBLIC GitHub repo, then run `build`:\n");
-  log("   cd launch/project");
-  log("   git init -b main && git add -A && git commit -m \"Volume (V6) launch sources\"");
-  log("   git remote add origin https://github.com/<you>/volume-launch.git   # create this empty PUBLIC repo first");
-  log("   git push -u origin main\n");
+  log("Next: commit and push launch/project with the rest of the Volume repo (it must be public), then run `build`:\n");
+  log("   git add -A && git commit -m \"Add launch sources\" && git push\n");
 }
 
-// The public repo and commit that hold the sources. Programmable reads them from there.
+// The public repo and commit that hold the sources: the Volume repo itself, with launch/project committed in it.
 function publicOrigin() {
   let url = process.env.PUBLIC_ORIGIN_URL, revision = process.env.PUBLIC_ORIGIN_REVISION;
   if (!url || !revision) {
-    if (!existsSync(join(PROJECT, ".git"))) fail("launch/project is not a git repo yet. Run `prepare` and follow its git steps first.");
-    if (git("status", "--porcelain")) fail("launch/project has uncommitted changes. Commit and push them first.");
+    try { git("rev-parse", "--is-inside-work-tree"); } catch { fail("launch/project is not inside a git repo. Run `prepare`, then commit and push it."); }
+    if (git("status", "--porcelain", "--", ".")) fail("launch/project has uncommitted changes. Commit and push them first.");
     revision = revision || git("rev-parse", "HEAD");
     url = url || git("remote", "get-url", "origin");
-    if (!git("branch", "-r", "--contains", revision)) fail("The latest commit in launch/project isn't pushed. Run `git push` there first.");
+    if (!git("branch", "-r", "--contains", revision)) fail("The latest commit isn't pushed to GitHub. Run `git push` first.");
   }
   url = url.replace(/^git@github\.com:/, "https://github.com/").replace(/\.git$/, "");
   if (!/^https:\/\//.test(url) || !/^[0-9a-f]{40}$/.test(revision)) fail(`Bad public origin: ${url} @ ${revision}`);

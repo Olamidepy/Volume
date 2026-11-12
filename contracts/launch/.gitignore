@@ -4,4 +4,3 @@ out/
 *.tgz.sha256
 package.json
 package-lock.json
-project/

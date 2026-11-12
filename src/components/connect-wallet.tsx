@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { Check, ChevronDown, Copy, LogOut, Wallet } from "lucide-react"
+import { Check, ChevronDown, Copy, LogOut } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { shortAddress, useWallet } from "@/lib/wallet"
@@ -58,7 +58,6 @@ export function ConnectWallet({ size = "sm", solid = false, align = "right", cla
           }}
           className={className}
         >
-          <Wallet />
           {status === "connecting" ? (
             "Connecting…"
           ) : size === "sm" ? (

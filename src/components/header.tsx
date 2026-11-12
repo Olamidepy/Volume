@@ -10,7 +10,6 @@ import { cn } from "@/lib/utils"
 
 const links = [
   ["Home", "#"],
-  ["Trade", "#trade"],
   ["Docs", "#docs"],
 ] as const
 

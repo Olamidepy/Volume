@@ -50,7 +50,7 @@ export function Steps() {
                 src={step.photo(900)}
                 alt=""
                 loading="lazy"
-                className="aspect-[4/3] w-full object-cover grayscale transition-transform duration-700 group-hover:scale-105"
+                className="aspect-[16/9] w-full object-cover grayscale md:aspect-[4/3] transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
             </div>

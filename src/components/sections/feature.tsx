@@ -19,7 +19,7 @@ export function Feature() {
           src={photos.curves(1400)}
           alt=""
           loading="lazy"
-          className="aspect-[4/5] w-full object-cover grayscale sm:aspect-[5/4] lg:aspect-[4/5]"
+          className="aspect-[4/3] w-full object-cover grayscale sm:aspect-[5/4] lg:aspect-[4/5]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
         <dl className="absolute inset-x-0 bottom-0 grid grid-cols-2 gap-px border-t border-white/10 bg-white/10 backdrop-blur-md">

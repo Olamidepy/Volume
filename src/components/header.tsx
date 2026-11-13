@@ -34,7 +34,8 @@ export function Header({ route }: { route: string }) {
           className="flex items-center justify-center gap-2 border-b border-white/10 bg-white px-4 py-2 text-center text-[13px] font-medium text-black transition-colors hover:bg-white/90"
         >
           <XIcon className="size-3 shrink-0" />
-          <span>
+          <span className="sm:hidden">Contract address drops on X · @{site.socials.X.split("/").pop()}</span>
+          <span className="max-sm:hidden">
             The contract address will be revealed on X. Follow @{site.socials.X.split("/").pop()}
           </span>
         </a>
@@ -72,14 +73,14 @@ export function Header({ route }: { route: string }) {
         </ul>
 
         <div className="flex items-center gap-1.5">
-          <ConnectWallet />
+          <ConnectWallet className="max-sm:h-10 max-sm:px-4" />
           <Button asChild size="sm" className="max-sm:hidden">
             <a href="#trade">Trade {coin}</a>
           </Button>
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="max-sm:size-10 md:hidden"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"

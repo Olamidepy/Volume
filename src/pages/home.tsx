@@ -48,6 +48,8 @@ export function Home() {
           alt=""
           className="absolute inset-0 -z-20 size-full object-cover opacity-90 [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"
         />
+        {/* On phones the artwork sits right behind the text, so darken it there to keep the copy readable. */}
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgb(0_0_0/0.7),rgb(0_0_0/0.25)_75%)] md:hidden" />
 
         <div className="wrap">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">

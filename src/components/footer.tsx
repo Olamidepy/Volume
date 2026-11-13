@@ -9,7 +9,7 @@ const pages = [
 
 export function Footer() {
   const socials = Object.entries(site.socials).filter(([, url]) => url)
-  const link = "text-muted-foreground text-sm transition-colors hover:text-white"
+  const link = "text-muted-foreground inline-block py-1.5 text-sm transition-colors hover:text-white md:py-0"
 
   return (
     <footer className="overflow-hidden border-t border-white/10">
@@ -23,7 +23,7 @@ export function Footer() {
         </div>
         <div>
           <p className="text-sm font-medium">Site</p>
-          <ul className="mt-4 space-y-2.5">
+          <ul className="mt-3 space-y-1 md:mt-4 md:space-y-2.5">
             {pages.map(([label, href]) => (
               <li key={label}>
                 <a href={href} className={link}>
@@ -35,7 +35,7 @@ export function Footer() {
         </div>
         <div>
           <p className="text-sm font-medium">Community</p>
-          <ul className="mt-4 space-y-2.5">
+          <ul className="mt-3 space-y-1 md:mt-4 md:space-y-2.5">
             {socials.map(([name, url]) => (
               <li key={name}>
                 <a href={url} target="_blank" rel="noreferrer" className={link}>

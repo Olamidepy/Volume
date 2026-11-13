@@ -15,9 +15,9 @@ export const site = {
   network: "Ethereum",
   launchpad: "Programmable",
   // Add these after launch. The Trade page unlocks when `contract` is set.
-  contract: "",
+  contract: "0xd77E973679D12662229969311bCa5faeE9dB7E86",
   // Volume's own pool hook. Paste it with `contract` after launch (both are in contracts/launch/out/summary.json).
-  hook: "",
+  hook: "0x7663de6389f6BAEE16006bEb585f5a132F87e0cC",
   launchUrl: "https://programmable.family",
   // WalletConnect project ID from https://dashboard.reown.com (enables phone wallets).
   // Leave empty to use browser wallets only.

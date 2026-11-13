@@ -7,7 +7,7 @@ export const site = {
   // The brand definition, shown on the home page and in the docs.
   definition: {
     term: "Volume",
-    kind: "n.",
+    kind: "V6",
     meaning: "the space a thing occupies.",
     lines: ["A token with no trades takes up no space.", "V6 measures itself by the room it takes up in the market, one trade at a time."],
   },

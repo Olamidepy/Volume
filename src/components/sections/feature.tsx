@@ -39,7 +39,7 @@ export function Feature() {
         <SectionHeading icon={Lightbulb} label="The definition" title={<>What {site.name} means.</>} />
         <figure className="panel rounded-2xl border border-white/10 p-6 md:p-7">
           <p className="font-display text-2xl font-medium tracking-tight md:text-3xl">
-            {site.definition.term} <span className="text-graphite text-lg italic md:text-xl">({site.definition.kind})</span>
+            {site.definition.term} <span className="text-graphite text-lg md:text-xl">({site.definition.kind})</span>
           </p>
           <p className="text-silver mt-3 text-lg leading-relaxed">{site.definition.meaning}</p>
           {site.definition.lines.map((line) => (
